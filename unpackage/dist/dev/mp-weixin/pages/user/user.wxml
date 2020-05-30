@@ -1,1 +1,1 @@
-<view class="_div"></view>
+<view><view class="user-top"><view class="setup"><view class="iconfont icon-header-15 _i"></view></view></view><view class="user_top"><view class="user_headimg" style="{{('background-image:url('+user.headimg+')')}}" mode="{{user.name}}"></view><view class="user_name">{{''+user.name+''}}</view><view class="user_descrip">{{''+user.description+''}}</view></view></view>

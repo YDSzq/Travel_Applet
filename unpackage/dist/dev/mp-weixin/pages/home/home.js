@@ -76,15 +76,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-}
-var recyclableRender = false
+var render = function () {}
 var staticRenderFns = []
-render._withStripped = true
+var recyclableRender
+var components
 
 
 
@@ -151,6 +146,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
@@ -171,7 +170,70 @@ var _default =
       interval: 3000,
       duration: 700,
       content: [{
-        id: 1 }] };
+        id: 1,
+        column: '热门目的地',
+        icon: 'http://112.126.63.94:8080/images/icon_5.jpg',
+        items: [{
+          id: 1,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 4.5,
+          price: 1100 },
+        {
+          id: 2,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 5.0,
+          price: 500 },
+        {
+          id: 3,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 4.5,
+          price: 1100 },
+        {
+          id: 4,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 5.0,
+          price: 500 }] },
+
+      {
+        id: 2,
+        column: '国内游',
+        icon: 'http://112.126.63.94:8080/images/icon_6.jpg',
+        items: [{
+          id: 1,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 3.0,
+          price: 1100 },
+        {
+          id: 1,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 3.0,
+          price: 1100 },
+        {
+          id: 1,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海',
+          to: '/',
+          star: 3.0,
+          price: 1100 },
+        {
+          id: 2,
+          img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+          name: '上海上海上海上海上海上海上海上海上海上海上海上海上海上海',
+          to: '/',
+          star: 4.3,
+          price: 500 }] }] };
 
 
 
@@ -194,18 +256,18 @@ var _default =
   created: function created() {
     h: {
       console.log("!");
-      uni.request({
-        url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
-        method: 'GET',
-        dataType: 'json',
-        header: {
-          'Content-Length': '3336',
-          'Content-Type': 'application/json;charset=utf-8' },
-
-        success: function success(res) {
-          console.log(res);
-        } });
-
+      // uni.request({
+      // 	url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
+      // 	method: 'GET',
+      // 	dataType: 'json',
+      // 	header: {
+      // 		'Content-Length': '3336',
+      // 		'Content-Type': 'application/json;charset=utf-8'
+      // 	},
+      // 	success: function(res) {
+      // 		console.log(res)
+      // 	}
+      // })
     }
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))

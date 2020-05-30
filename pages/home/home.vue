@@ -21,16 +21,18 @@
 				</view>
 			</view>
 		</view>
-		<view class="content">
+		<view class="content" v-for="(ct,index) in content" :key="index">
 			<view class="column">
-				<image src="http://112.126.63.94:8080/images/icon_5.jpg"></image>
-				<text>热门推荐</text>
+				<image :src="ct.icon"></image>
+				<text>{{ct.column}}</text>
 				<navigator url="" class="column-more">查看更多</navigator>
 			</view>
-			<view class="item"></view>
-			<view class="item"></view>
-			<view class="item"></view>
-			<view class="item"></view>
+			<view class="item" v-for="(item,index) in ct.items" :key="index">
+				<view class="item-img" :style="'background-image:url('+item.img+')'"></view>
+				<text>{{item.name}}</text>
+				<uni-rate :value="item.star" size="18" style="margin: 2vw;"></uni-rate>
+				<text class="item-price">{{item.price}}</text>
+			</view>
 		</view>
 	</view>
 </template>
@@ -39,6 +41,7 @@
 	export default {
 		data() {
 			return {
+				triggered: false,
 				search_word: '',
 				rcs: [{
 					img: 'http://112.126.63.94:8080/images/banner_2.jpg',
@@ -56,9 +59,78 @@
 				duration: 700,
 				content: [{
 					id: 1,
-
+					column: '热门目的地',
+					icon: 'http://112.126.63.94:8080/images/icon_5.jpg',
+					items: [{
+						id: 1,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点某旅游景点',
+						to: '/',
+						star: 4.5,
+						price: 1100
+					}, {
+						id: 2,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点',
+						to: '/',
+						star: 5.0,
+						price: 500
+					}, {
+						id: 3,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点',
+						to: '/',
+						star: 4.5,
+						price: 1100
+					}, {
+						id: 4,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点',
+						to: '/',
+						star: 5.0,
+						price: 500
+					}]
+				}, {
+					id: 2,
+					column: '国内游',
+					icon: 'http://112.126.63.94:8080/images/icon_6.jpg',
+					items: [{
+						id: 1,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点',
+						to: '/',
+						star: 3.0,
+						price: 1100
+					}, {
+						id: 1,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点',
+						to: '/',
+						star: 3.0,
+						price: 1100
+					}, {
+						id: 1,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点',
+						to: '/',
+						star: 3.0,
+						price: 1100
+					}, {
+						id: 2,
+						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
+						name: '上海某旅游景点上海某旅游景点上海某旅游景点',
+						to: '/',
+						star: 4.3,
+						price: 500
+					}]
 				}]
 			}
+		},
+		onLoad() {
+			this._freshing = false;
+			setTimeout(() => {
+				this.triggered = true;
+			}, 1000)
 		},
 		methods: {
 			search: function() {
@@ -73,23 +145,41 @@
 						url: '../search/search?wd=' + this.search_word
 					})
 				}
+			},
+			onPulling: function(e) {
+				console.log("onpulling", e);
+			},
+			onRefresh: function() {
+				if (this._freshing) return;
+				this._freshing = true;
+				setTimeout(() => {
+					this.triggered = false;
+					this._freshing = false;
+				}, 3000)
+			},
+			onRestore: function() {
+				this.triggered = 'restore'; // 需要重置
+				console.log("onRestore");
+			},
+			onAbort: function() {
+				console.log("onAbort");
 			}
 		},
 		created: function() {
 			h: {
 				console.log("!")
-				uni.request({
-					url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
-					method: 'GET',
-					dataType: 'json',
-					header: {
-						'Content-Length':'3336',
-						'Content-Type': 'application/json;charset=utf-8'
-					},
-					success: function(res) {
-						console.log(res)
-					}
-				})
+				// uni.request({
+				// 	url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
+				// 	method: 'GET',
+				// 	dataType: 'json',
+				// 	header: {
+				// 		'Content-Length': '3336',
+				// 		'Content-Type': 'application/json;charset=utf-8'
+				// 	},
+				// 	success: function(res) {
+				// 		console.log(res)
+				// 	}
+				// })
 			}
 		}
 	}
@@ -107,18 +197,6 @@
 		background-size: cover;
 	}
 
-	.top {
-		position: sticky;
-		width: 100%;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 8vw;
-		padding: 2vw;
-		box-shadow: 0 0 5px #bbb;
-		z-index: 999;
-		background-color: #fff;
-	}
 
 	.search {
 		width: 78%;
@@ -170,16 +248,20 @@
 		margin: auto;
 		padding: 1vw 0;
 	}
+
 	.content .column-text {
 		display: block;
 		font-size: 5vw;
 		color: #444;
 	}
+
 	.content .column-more {
 		float: right;
 		font-size: 3vw;
 		color: #bbb;
-	}.content .column-more::after {
+	}
+
+	.content .column-more::after {
 		content: ' >';
 	}
 
@@ -189,13 +271,40 @@
 		width: 7.5vw;
 		height: 6vw;
 	}
-	.content .item{
+
+	.content .item {
 		width: 45vw;
 		display: inline-block;
 		margin-left: 2.5vw;
 		margin-top: 2.5vw;
 		height: 50vw;
-		border-radius: 5vw;
+		border-radius: 3vw;
 		box-shadow: 0 1px 4px #ccc;
+		position: relative;
+		overflow: hidden;
 	}
+
+	.content .item .item-img {
+		width: 100%;
+		height: 30vw;
+		background-position: center;
+		background-size: cover;
+	}
+
+	.content .item text {
+		margin: auto;
+		color: #333;
+		width: 90%;
+		display: block;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}.content .item .item-price {
+		color: #DD524D;
+		font-size: 5vw;
+	}.content .item .item-price::before{
+		content: "￥";
+		font-weight: 600;
+	}
+	
 </style>

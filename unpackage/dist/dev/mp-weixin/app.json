@@ -12,6 +12,5 @@
   "usingComponents": {
     "home": "/pages/home/home",
     "user": "/pages/user/user"
-  },
-  "sitemapLocation": "sitemap94.json"
+  }
 }

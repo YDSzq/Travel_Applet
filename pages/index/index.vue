@@ -1,7 +1,9 @@
 <template>
 	<view>
 		<home v-if="pages == '主页'"></home>
-		<user v-if="page == '我的'"></user>
+		<user v-if="pages == '我的'"></user>
+		<br>
+		<br>
 		<view class="footer">
 			<view class="footer-item" v-for="(item,index) in items" :key="index" @click="newNav" :data-page="item.text"
 			 :style="'width:'+ 100/Object.keys(items).length +'%;'" :class="pages==item.text?'footer_this':''">
@@ -47,12 +49,12 @@
 		padding: 1vw 0;
 		font-size: 10vw;
 		box-shadow: 0 0 10px #bbb;
-		position: sticky;
+		position: fixed;
 		bottom: 0;
 		left: 0;
 		right: 0;
 		font-size: 3vw;
-		background-color: #eee;
+		background-color: #f5f5f5;
 		z-index: 999;
 	}
 	.footer-item{
