@@ -47,7 +47,7 @@
 	}
 
 	.user_name {
-		color: #333;
+		color: #555;
 		font-size: 8vw;
 		font-weight: 600;
 		margin-left: 25vw;
