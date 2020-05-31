@@ -21,17 +21,19 @@
 				</view>
 			</view>
 		</view>
-		<view class="content" v-for="(ct,index) in content" :key="index">
+		<view class="content" v-for="(ct,key) in content" :key="key">
 			<view class="column">
 				<image :src="ct.icon"></image>
 				<text>{{ct.column}}</text>
 				<navigator url="" class="column-more">查看更多</navigator>
 			</view>
-			<view class="item" v-for="(item,index) in ct.items" :key="index">
+			<view class="item" v-for="(item,it) in ct.items" :key="it">
 				<view class="item-img" :style="'background-image:url('+item.img+')'"></view>
-				<text>{{item.name}}</text>
-				<uni-rate :value="item.star" size="18" style="margin: 2vw;"></uni-rate>
-				<text class="item-price">{{item.price}}</text>
+				<view style="display: block; margin: auto; width: 90%;">
+					<text class="item-name">{{item.name}}</text>
+					<uni-rate :value="item.star" size="18" disabled="false"></uni-rate>
+					<text class="item-price">{{item.price}}</text>
+				</view>
 			</view>
 		</view>
 	</view>
@@ -41,7 +43,6 @@
 	export default {
 		data() {
 			return {
-				triggered: false,
 				search_word: '',
 				rcs: [{
 					img: 'http://112.126.63.94:8080/images/banner_2.jpg',
@@ -66,7 +67,7 @@
 						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
 						name: '上海某旅游景点某旅游景点',
 						to: '/',
-						star: 4.5,
+						star: 4,
 						price: 1100
 					}, {
 						id: 2,
@@ -120,17 +121,11 @@
 						img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
 						name: '上海某旅游景点上海某旅游景点上海某旅游景点',
 						to: '/',
-						star: 4.3,
+						star: 4.5,
 						price: 500
 					}]
 				}]
 			}
-		},
-		onLoad() {
-			this._freshing = false;
-			setTimeout(() => {
-				this.triggered = true;
-			}, 1000)
 		},
 		methods: {
 			search: function() {
@@ -145,42 +140,24 @@
 						url: '../search/search?wd=' + this.search_word
 					})
 				}
-			},
-			onPulling: function(e) {
-				console.log("onpulling", e);
-			},
-			onRefresh: function() {
-				if (this._freshing) return;
-				this._freshing = true;
-				setTimeout(() => {
-					this.triggered = false;
-					this._freshing = false;
-				}, 3000)
-			},
-			onRestore: function() {
-				this.triggered = 'restore'; // 需要重置
-				console.log("onRestore");
-			},
-			onAbort: function() {
-				console.log("onAbort");
 			}
 		},
 		created: function() {
-			h: {
-				console.log("!")
-				// uni.request({
-				// 	url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
-				// 	method: 'GET',
-				// 	dataType: 'json',
-				// 	header: {
-				// 		'Content-Length': '3336',
-				// 		'Content-Type': 'application/json;charset=utf-8'
-				// 	},
-				// 	success: function(res) {
-				// 		console.log(res)
-				// 	}
-				// })
-			}
+			//h: {
+			//console.log("!")
+			// uni.request({
+			// 	url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
+			// 	method: 'GET',
+			// 	dataType: 'json',
+			// 	header: {
+			// 		'Content-Length': '3336',
+			// 		'Content-Type': 'application/json;charset=utf-8'
+			// 	},
+			// 	success: function(res) {
+			// 		console.log(res)
+			// 	}
+			// })
+			//}
 		}
 	}
 </script>
@@ -277,7 +254,6 @@
 		display: inline-block;
 		margin-left: 2.5vw;
 		margin-top: 2.5vw;
-		height: 50vw;
 		border-radius: 3vw;
 		box-shadow: 0 1px 4px #ccc;
 		position: relative;
@@ -291,20 +267,25 @@
 		background-size: cover;
 	}
 
-	.content .item text {
-		margin: auto;
+	.content .item .item-name {
+		margin: 2vw 0;
+		margin-bottom: 3vw;
 		color: #333;
-		width: 90%;
 		display: block;
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
-	}.content .item .item-price {
+	}
+
+	.content .item .item-price {
 		color: #DD524D;
 		font-size: 5vw;
-	}.content .item .item-price::before{
+		display: block;
+		margin: 2vw 0;
+	}
+
+	.content .item .item-price::before {
 		content: "￥";
 		font-weight: 600;
 	}
-	
 </style>

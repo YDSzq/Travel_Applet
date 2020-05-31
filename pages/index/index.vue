@@ -2,11 +2,10 @@
 	<view>
 		<home v-if="pages == '主页'"></home>
 		<user v-if="pages == '我的'"></user>
-		<br>
-		<br>
+		<view style="height: 20vw;"></view>
 		<view class="footer">
-			<view class="footer-item" v-for="(item,index) in items" :key="index" @click="newNav" :data-page="item.text"
-			 :style="'width:'+ 100/Object.keys(items).length +'%;'" :class="pages==item.text?'footer_this':''">
+			<view class="footer-item" v-for="(item,index) in items" :key="index" @click="newNav" :data-page="item.text" :style="'width:'+ 100/Object.keys(items).length +'%;'"
+			 :class="pages==item.text?'footer_this':''">
 				<i :class="'footer-item-icon fa fa-'+item.icon"></i>
 				<view class="footer-item-text">
 					{{item.text}}
@@ -44,7 +43,7 @@
 </script>
 
 <style>
-	.footer{
+	.footer {
 		width: 100%;
 		padding: 1vw 0;
 		font-size: 10vw;
@@ -57,16 +56,18 @@
 		background-color: #f5f5f5;
 		z-index: 999;
 	}
-	.footer-item{
+
+	.footer-item {
 		display: inline-block;
 		text-align: center;
 		color: #aaa;
 		line-height: 5vw;
 	}
+
 	.footer_this {
 		color: #f0ad4e;
 	}
-	
+
 	.footer-item-icon {
 		font-size: 6vw;
 	}

@@ -76,7 +76,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var components
+var components = {
+  "uni-list": function() {
+    return __webpack_require__.e(/*! import() | components/uni-list/uni-list */ "components/uni-list/uni-list").then(__webpack_require__.bind(null, /*! @/components/uni-list/uni-list.vue */ 47))
+  },
+  "uni-list-item": function() {
+    return __webpack_require__.e(/*! import() | components/uni-list-item/uni-list-item */ "components/uni-list-item/uni-list-item").then(__webpack_require__.bind(null, /*! @/components/uni-list-item/uni-list-item.vue */ 54))
+  }
+}
 var render = function() {
   var _vm = this
   var _h = _vm.$createElement
@@ -133,17 +140,30 @@ Object.defineProperty(exports, "__esModule", { value: true });exports.default = 
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 var _default =
 {
   data: function data() {
     return {
       user: {
         "name": "laizq",
-        "headimg": "https://static.codemao.cn/FpPGH_EvIeIVIWU8HOP4-frnvN6Q",
-        "fans": "11",
-        "follow": "33",
-        "like": "61",
-        "description": "源码星球前端开发~" } };
+        "headimg": "https://static.codemao.cn/FpPGH_EvIeIVIWU8HOP4-frnvN6Q" } };
 
 
   } };exports.default = _default;

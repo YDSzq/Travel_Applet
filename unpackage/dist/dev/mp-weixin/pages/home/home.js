@@ -76,10 +76,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "recyclableRender", function() { return recyclableRender; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "components", function() { return components; });
-var render = function () {}
+var components = {
+  "uni-rate": function() {
+    return __webpack_require__.e(/*! import() | components/uni-rate/uni-rate */ "components/uni-rate/uni-rate").then(__webpack_require__.bind(null, /*! @/components/uni-rate/uni-rate.vue */ 40))
+  }
+}
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+}
+var recyclableRender = false
 var staticRenderFns = []
-var recyclableRender
-var components
+render._withStripped = true
 
 
 
@@ -176,28 +185,28 @@ var _default =
         items: [{
           id: 1,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点某旅游景点',
           to: '/',
-          star: 4.5,
+          star: 4,
           price: 1100 },
         {
           id: 2,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点',
           to: '/',
           star: 5.0,
           price: 500 },
         {
           id: 3,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点',
           to: '/',
           star: 4.5,
           price: 1100 },
         {
           id: 4,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点',
           to: '/',
           star: 5.0,
           price: 500 }] },
@@ -209,30 +218,30 @@ var _default =
         items: [{
           id: 1,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点',
           to: '/',
           star: 3.0,
           price: 1100 },
         {
           id: 1,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点',
           to: '/',
           star: 3.0,
           price: 1100 },
         {
           id: 1,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海',
+          name: '上海某旅游景点',
           to: '/',
           star: 3.0,
           price: 1100 },
         {
           id: 2,
           img: 'http://112.126.63.94:8080/images/jiangxuan_4.jpg',
-          name: '上海上海上海上海上海上海上海上海上海上海上海上海上海上海',
+          name: '上海某旅游景点上海某旅游景点上海某旅游景点',
           to: '/',
-          star: 4.3,
+          star: 4.5,
           price: 500 }] }] };
 
 
@@ -254,21 +263,21 @@ var _default =
     } },
 
   created: function created() {
-    h: {
-      console.log("!");
-      // uni.request({
-      // 	url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
-      // 	method: 'GET',
-      // 	dataType: 'json',
-      // 	header: {
-      // 		'Content-Length': '3336',
-      // 		'Content-Type': 'application/json;charset=utf-8'
-      // 	},
-      // 	success: function(res) {
-      // 		console.log(res)
-      // 	}
-      // })
-    }
+    //h: {
+    //console.log("!")
+    // uni.request({
+    // 	url: "/api/downPriceGoodsInterface/getDownPriceGoodsList",
+    // 	method: 'GET',
+    // 	dataType: 'json',
+    // 	header: {
+    // 		'Content-Length': '3336',
+    // 		'Content-Type': 'application/json;charset=utf-8'
+    // 	},
+    // 	success: function(res) {
+    // 		console.log(res)
+    // 	}
+    // })
+    //}
   } };exports.default = _default;
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./node_modules/@dcloudio/uni-mp-weixin/dist/index.js */ 1)["default"]))
 
